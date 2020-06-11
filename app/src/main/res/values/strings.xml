@@ -1,0 +1,9 @@
+<resources>
+    <string name="app_name">HandsOnExam</string>
+
+    <string-array name="gender">
+        <item>Male</item>
+        <item>Female</item>
+        <item>Prefer not to say</item>
+    </string-array>
+</resources>
