@@ -3,6 +3,7 @@ package com.example.handsonexam;
 import android.app.DatePickerDialog;
 import android.os.Bundle;
 import android.view.View;
+import android.widget.AdapterView;
 import android.widget.ArrayAdapter;
 import android.widget.Button;
 import android.widget.DatePicker;
@@ -16,11 +17,7 @@ import java.text.SimpleDateFormat;
 import java.util.Calendar;
 import java.util.Date;
 
-public class MainActivity extends AppCompatActivity {
-
-    private static final String TAG = "MainActivity";
-
-    private DatePickerDialog.OnDateSetListener btnSelectDate;
+public class MainActivity extends AppCompatActivity implements AdapterView.OnItemSelectedListener {
 
     TextView tvDate;
     TextView tvAge;
@@ -56,6 +53,17 @@ public class MainActivity extends AppCompatActivity {
 
     }
 
+    @Override
+    public void onItemSelected(AdapterView<?> parent, View view, int pos, long id) {
+        String item = parent.getItemAtPosition(pos).toString();
+        Toast.makeText(this, item + " selected", Toast.LENGTH_SHORT).show();
+    }
+
+    @Override
+    public void onNothingSelected(AdapterView<?> adapterView) {
+
+    }
+
     public void toast(View view) {
         Toast.makeText(this, "Submitted!", Toast.LENGTH_SHORT).show();
     }
@@ -80,11 +88,11 @@ public class MainActivity extends AppCompatActivity {
 
         int currentAge = currentDay.get(Calendar.YEAR) - calendar.get(Calendar.YEAR);
 
-        if (currentAge <= 18) {
-            Toast.makeText(this, "You're not legitimate to register", Toast.LENGTH_SHORT).show();
-        } else if (currentDay.get(Calendar.DAY_OF_MONTH) < calendar.get(Calendar.DAY_OF_MONTH)) {
-            tvAge.setText(currentAge);
-        }
+            if (currentDay.get(Calendar.DAY_OF_MONTH) < calendar.get(Calendar.DAY_OF_MONTH)) {
+                currentAge--;
+            }
+
         return currentAge;
+
     }
 }
