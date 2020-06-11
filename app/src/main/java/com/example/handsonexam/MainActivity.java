@@ -89,11 +89,12 @@ public class MainActivity extends AppCompatActivity implements AdapterView.OnIte
 
         int currentAge = currentDay.get(Calendar.YEAR) - calendar.get(Calendar.YEAR);
 
+        if (currentAge <= 18) {
+            Toast.makeText(this, "You're not legitimate to register", Toast.LENGTH_SHORT).show();
             if (currentDay.get(Calendar.DAY_OF_MONTH) < calendar.get(Calendar.DAY_OF_MONTH)) {
                 currentAge--;
             }
-
+        }
         return currentAge;
-
     }
 }
